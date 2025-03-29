@@ -93,6 +93,12 @@
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
+
+    // Close navbar on small screens when nav item is clicked
+    $('.navbar-nav a').on('click', function() {
+        if ($(window).width() < 992) {  // Bootstrap's lg breakpoint
+            $('#navbarCollapse').collapse('hide');
+        }
+    });
     
 })(jQuery);
-
