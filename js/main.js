@@ -2,12 +2,24 @@
     "use strict";
 
     // Spinner
+    // Spinner
     var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
+        function hideSpinner() {
+            var spinner = $('#spinner');
+            if (spinner.length) {
+                spinner.addClass('hide');
+                setTimeout(function() {
+                    spinner.css('display', 'none');
+                }, 500);
             }
-        }, 1);
+        }
+
+        // Multiple event listeners to ensure spinner removal
+        $(document).ready(hideSpinner);
+        $(window).on('load', hideSpinner);
+        
+        // Fallback timeout in case other methods fail
+        setTimeout(hideSpinner, 3000);
     };
     spinner();
     
